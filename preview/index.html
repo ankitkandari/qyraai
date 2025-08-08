@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qyra AI Preview Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <!-- Background Decorations -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-200 rounded-full opacity-20 floating"></div>
+        <div class="absolute top-3/4 right-1/4 w-24 h-24 bg-purple-200 rounded-full opacity-20 floating" style="animation-delay: -2s;"></div>
+        <div class="absolute bottom-1/4 left-1/2 w-20 h-20 bg-indigo-200 rounded-full opacity-20 floating" style="animation-delay: -4s;"></div>
+    </div>
+    <!-- Header -->
+    <header class="relative z-10 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center" cursorshover="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle w-6 h-6 text-white" aria-hidden="true" cursorshover="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg></div>
+                    <h1 class="text-2xl font-bold text-gray-900">Qyra AI</h1>
+                </div>
+                <button id="resetBtn" class="hidden px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-200 hover:bg-gray-100 rounded-lg">
+                    Reset Client ID
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Hero Section -->
+        <div class="text-center mb-16 animate-fade-in">
+            <h2 class="text-5xl sm:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+    Test Your Chatbot
+    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 leading-normal">
+        Integration
+    </span>
+</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Seamlessly test your chatbot widget with our beautiful testing environment.
+                Simply enter your client ID and watch your chatbot come to life.
+            </p>
+        </div>
+        <!-- Features Grid -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16 animate-slide-up">
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 group">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Quick Setup</h3>
+                <p class="text-gray-600">Get your chatbot running in seconds with our streamlined setup process.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 group">
+                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Secure Storage</h3>
+                <p class="text-gray-600">Your client ID is safely stored in your browser's local storage.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 group">
+                <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Live Testing</h3>
+                <p class="text-gray-600">See your chatbot in action with real-time integration testing.</p>
+            </div>
+        </div>
+        <!-- Client ID Form -->
+        <div class="max-w-md mx-auto">
+            <div id="setupCard" class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200 p-8 animate-slide-up">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Enter Client ID</h3>
+                    <p class="text-gray-600">Provide your chatbot client ID to begin testing</p>
+                </div>
+                <form id="clientIdForm" class="space-y-4">
+                    <div>
+                        <label for="clientId" class="block text-sm font-medium text-gray-700 mb-2">Client ID</label>
+                        <input
+                            type="text"
+                            id="clientId"
+                            name="clientId"
+                            placeholder="e.g., client_4325b5365905"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                            required
+                        >
+                    </div>
+                    <button
+                        type="submit"
+                        id="submitBtn"
+                        class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-6 rounded-xl hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 transform hover:scale-105 active:scale-95"
+                    >
+                        <span id="submitText">Initialize Chatbot</span>
+                        <span id="loadingText" class="hidden">
+                            <svg class="inline w-4 h-4 mr-2 animate-spin" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Initializing...
+                        </span>
+                    </button>
+                </form>
+            </div>
+            <div id="statusCard" class="hidden bg-green-50 border border-green-200 rounded-2xl p-6 mt-6 animate-slide-up">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 22">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-800">Chatbot Active</h4>
+                        <p class="text-green-600 text-sm">Client ID: <span id="activeClientId"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="relative z-10 bg-white/80 backdrop-blur-sm border-t border-gray-200 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-gray-600">
+                <p>&copy; 2025 Qyra AI</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // DOM Elements
+        const form = document.getElementById('clientIdForm');
+        const clientIdInput = document.getElementById('clientId');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const loadingText = document.getElementById('loadingText');
+        const resetBtn = document.getElementById('resetBtn');
+        const setupCard = document.getElementById('setupCard');
+        const statusCard = document.getElementById('statusCard');
+        const activeClientIdSpan = document.getElementById('activeClientId');
+
+        // Function to parse URL parameters
+        function getUrlParameters() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                client_id: params.get('client_id'),
+                preview: params.get('preview')
+            };
+        }
+
+        // Check for stored client ID or URL parameters on page load
+        function checkStoredClientId() {
+            const urlParams = getUrlParameters();
+            const storedId = localStorage.getItem('chatbot_client_id');
+
+            if (urlParams.client_id) {
+                showActiveStatus(urlParams.client_id);
+                injectChatbotScript(urlParams.client_id, urlParams.preview);
+                resetBtn.classList.remove('hidden');
+            } else if (storedId) {
+                showActiveStatus(storedId);
+                injectChatbotScript(storedId);
+                resetBtn.classList.remove('hidden');
+            }
+        }
+
+        // Inject chatbot script
+        function injectChatbotScript(clientId, preview = null) {
+            // Remove existing script if any
+            const existingScript = document.querySelector('script[src^="https://cdn.freecity.tech/scripts/widget.js"]');
+            if (existingScript) {
+                existingScript.remove();
+            }
+
+            // Create and inject new script
+            const script = document.createElement('script');
+            script.src = preview ? `https://cdn.freecity.tech/scripts/widget.js?preview=true` : 'https://cdn.freecity.tech/scripts/widget.js';
+            script.setAttribute('data-client-id', clientId);
+            document.head.appendChild(script);
+        }
+
+        // Show active status
+        function showActiveStatus(clientId) {
+            setupCard.classList.add('hidden');
+            statusCard.classList.remove('hidden');
+            activeClientIdSpan.textContent = clientId;
+        }
+
+        // Handle form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const clientId = clientIdInput.value.trim();
+            if (!clientId) return;
+
+            // Show loading state
+            submitText.classList.add('hidden');
+            loadingText.classList.remove('hidden');
+            submitBtn.disabled = true;
+
+            // Store client ID
+            localStorage.setItem('chatbot_client_id', clientId);
+
+            // Simulate processing time and refresh
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        });
+
+        // Handle reset
+        resetBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to reset the client ID? This will remove the current chatbot and refresh the page.')) {
+                localStorage.removeItem('chatbot_client_id');
+                // Reload the page without any query parameters
+                window.location.href = window.location.pathname;
+            }
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', checkStoredClientId);
+
+        // Add some interactive effects
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.classList.add('transform', 'scale-105');
+            });
+            card.addEventListener('mouseleave', function() {
+                this.classList.remove('transform', 'scale-105');
+            });
+        });
+    </script>
+</body>
+</html>

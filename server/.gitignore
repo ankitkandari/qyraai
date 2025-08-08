@@ -1,0 +1,12 @@
+# FastApi
+/venv
+/venv1
+.env
+*.log
+/test
+/.idea/
+**/__pycache__/
+
+# Platform.sh
+.platform.app.yaml
+/.platform/
