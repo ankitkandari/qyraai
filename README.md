@@ -160,7 +160,7 @@ This project is licensed under the MIT License
 
 ## 🆘 Support
 
-- 🐛 **Issues**: [GitHub Issues](https://github.com/your-username/your-repo/issues)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/ankitkandari/qyraai/issues)
 
 ## 🙏 Acknowledgments
 
@@ -173,7 +173,7 @@ This project is licensed under the MIT License
 
 <div align="center">
 
-**[⭐ Star this repo](https://github.com/your-username/your-repo)** • **[🐛 Report Bug](https://github.com/your-username/your-repo/issues)** • **[✨ Request Feature](https://github.com/your-username/your-repo/issues)**
+**[⭐ Star this repo](https://github.com/ankitkandari/qyraai)** • **[🐛 Report Bug](https://github.com/ankitkandari/qyraai/issues)** • **[✨ Request Feature](https://github.com/ankitkandari/qyraai/issues)**
 
 Made with ❤️ and Redis
 
