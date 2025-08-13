@@ -105,7 +105,7 @@ const Homepage = () => {
               and deliver exceptional customer experiences 24/7.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link href={"/signup"} className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-lg">
+              <Link href={"auth/signup"} className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-lg">
                 Start Free Trial
                 <ArrowRight className="w-5 h-5" />
               </Link>
